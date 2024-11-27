@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Productos Disponibles</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.stock }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align: center;">
+        <button onclick="alert('Sesión cerrada')">Cerrar Sesión</button>
+    </div>
+</body>
+</html>
+
+
+
+
+Explicación
+Plantilla HTML independiente:
+El archivo productos.html se encuentra en el directorio templates y se carga usando Jinja2.
+Este archivo define el diseño de la tabla para mostrar productos y un botón de cerrar sesión.
+Generación del HTML:
+vistas.py utiliza Jinja2 para cargar y renderizar el archivo productos.html con los datos de los productos obtenidos desde la base de datos.
+MVC:
+modelos.py gestiona la interacción con PostgreSQL.
+controlador.py maneja la lógica y flujo de la aplicación.
+vistas.py se encarga de la generación y presentación de los datos.
+De esta forma, separamos claramente la lógica de negocio y la presentación de los datos en un archivo HTML aparte.
+
+
+
